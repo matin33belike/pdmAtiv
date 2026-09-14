@@ -9,3 +9,10 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
     console.log("Requisição:", event.request.url);
 });
+
+self.addEventListener("fetch", (event) => {
+    if (event.request.url.endsWith("/teste-sw")) {
+        event.respondWith(new Response("Resposta criada pelo Service Worker!"));
+        return;
+    }
+});
